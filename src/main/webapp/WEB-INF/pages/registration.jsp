@@ -43,11 +43,11 @@ pageEncoding="UTF-8"%>
 				<table>
 					<tr>
 						<td><label>Login:</label></td>
-						<td><input type="text" name="login" pattern="[a-zA-Z0-9_\-]{3,20}" required autofocus></td>
+						<td><input type="text" name="login" pattern="[a-zA-Z0-9_\-]{3,20}" required autofocus> ("a-z", "A-Z", "0-9", "_", "-")</td>
 					</tr>
 					<tr>
 						<td><label>Password:</label></td>
-						<td><input type="password" name="password" pattern=".{6,12}" required></td>
+						<td><input type="password" name="password" pattern=".{6,12}" required> (6-12 characters)</td>
 					</tr>
 					<tr>
 						<td colspan="2"><input type="submit" value="Register"></td>
