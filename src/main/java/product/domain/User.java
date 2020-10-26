@@ -20,6 +20,8 @@ public class User {
     @JoinColumn(name = "cart_id", referencedColumnName = "id")
     private Cart cart;
 
+    public User() {}
+
     public User(String login, String password, Cart cart) {
         this.login = login;
         this.password = password;

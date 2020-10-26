@@ -20,6 +20,8 @@ public class Product {
     @Column(name = "image")
     private String image;
 
+    public Product() {}
+
     public Product(String title, double price, String image) {
         this.title = title;
         this.price = price;
