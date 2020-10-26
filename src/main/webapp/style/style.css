@@ -1,13 +1,13 @@
 #header {
-	background: #9fc3ff;
-	padding: 10px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+    background: #9fc3ff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #name {
-	width: 13%;
+    width: 13%;
 }
 
 #navigation {
@@ -15,111 +15,111 @@
 }
 
 #user {
-	width: 12.5%;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
+    width: 12.5%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 #totalProducts {
-	color: red;
+    color: #ff0000;
 }
 
 #main {
-	background: #ffffff;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 #content {
-	width: 1370px;
-	background: #ffffff;
-	display: flex;
-	flex-wrap: wrap;
+    width: 75%;
+    background: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #emptyCart {
-	text-align: center;	
+    text-align: center;
 }
 
 #footer {
-	background: #9fc3ff;
+    background: #9fc3ff;
 }
 
 body {
-	background: #eff5fe;
-	font-family: sans-serif;
+    background: #eff5fe;
+    font-family: sans-serif;
 }
 
 form {
-	margin: 20px;
+    margin: 20px;
 }
 
 table {
-	border: 1px solid black;
+    border: 1px solid black;
 }
-   
+
 th {
-	padding: 1em;
+    padding: 1em;
 }
-   
+
 td {
-	padding: 1em;
+    padding: 1em;
 }
 
 a {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 button {
-	all: unset;
-	background: #73d269;
-	color: white;
-	padding: 0.5em 2em;
-	cursor: pointer;
+    all: unset;
+    background: #73d269;
+    color: white;
+    padding: 0.5em 2em;
+    cursor: pointer;
 }
 
 .addButton {
-	background: #73d269;
-	color: white;
-	padding: 0.5em 2em;
-	margin: 20px 10px 10px;
+    background: #73d269;
+    color: white;
+    padding: 0.5em 2em;
+    margin: 20px 10px 10px;
 }
 
 .deleteButton {
-	color: red;
-	margin: 0 10px;
+    color: red;
+    margin: 0 10px;
 }
 
 .headerButton {
-	color: white;
-	margin: 0 10px;
+    color: white;
+    margin: 0 10px;
 }
 
 .catalogButton {
-	color: #9fc3ff;
+    color: #9fc3ff;
 }
 
 .imgButton {
-	margin: 0 10px;
+    margin: 0 10px;
 }
 
 .editButton {
-	color: blue;
-	margin: 0 10px;
+    color: blue;
+    margin: 0 10px;
 }
 
 .product-item {
-	text-align: center;
-	margin: 10px;
-	padding: 10px;
-	width: 300px;
-	background: #fdfde7;
-	border: 1px solid #e1e1e1; 
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    background: #fdfde7;
+    border: 1px solid #e1e1e1;
 }
 
 .product-item img {
-	width: 300px;
-	height: 300px;
+    width: 300px;
+    height: 300px;
 }
