@@ -66,6 +66,7 @@
 						<td align="center"><a class="deleteButton" href="<c:url value="/clear"/>">Clear</a></td>
 					</tr>
 				</table>
+				<br>
 			</c:if>
 			<c:if test = "${cart.totalProducts == 0}">
 				<div id="emptyCart">
