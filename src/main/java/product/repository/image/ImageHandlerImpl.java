@@ -7,8 +7,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import product.service.ProductServiceImpl;
-
 import java.io.File;
 import java.io.IOException;
 
