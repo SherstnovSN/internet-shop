@@ -16,7 +16,7 @@ import java.io.IOException;
 @PropertySource(value = "classpath:/project.properties")
 public class ImageHandlerImpl implements ImageHandler {
 
-    private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(ImageHandlerImpl.class);
 
     @Value("${product_image_save_location}")
     private String SAVE_LOCATION;
