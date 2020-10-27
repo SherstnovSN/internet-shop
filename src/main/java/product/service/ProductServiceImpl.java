@@ -1,5 +1,7 @@
 package product.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,116 +20,75 @@ import product.repository.ProductRepository;
 @PropertySource(value = "classpath:/project.properties")
 public class ProductServiceImpl implements ProductService {
 
+    private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
+
+    @Value("${product_image_save_location}")
+    private String SAVE_LOCATION;
+
     @Autowired
     private ProductRepository productRepository;
-
-    @Value("${project.basedir}")
-    private String basedir;
 
     @Override
     @Transactional
     public void save(String title, double price, MultipartFile imageFile) {
-
-        final String SAVE_LOCATION = basedir + "/src/main/webapp/productImages/";
-
-        String fileName = imageFile.getOriginalFilename();
-
-        File pathFile = new File(SAVE_LOCATION + fileName);
-
-        if (!pathFile.exists()) {
-            try {
-                imageFile.transferTo(pathFile);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-
-            String tempName = fileName;
-
-            for (int i = 1; pathFile.exists(); i++) {
-                fileName = "(" + i + ")" + tempName;
-                pathFile = new File(SAVE_LOCATION + fileName);
-            }
-
-            try {
-                imageFile.transferTo(pathFile);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        Product product = new Product(title, price, fileName);
+        Product product = new Product(title, price, getOriginalImageName(imageFile.getOriginalFilename()));
         productRepository.save(product);
+        saveImage(imageFile);
     }
 
     @Override
     @Transactional
     public void edit(int id, String title, double price, MultipartFile imageFile) {
-
-        final String SAVE_LOCATION = basedir + "/src/main/webapp/productImages/";
-
         Product product = getById(id);
-
-        String oldFileName = product.getImage();
-        File deletePathFile = new File(SAVE_LOCATION + oldFileName);
-        deletePathFile.delete();
-
-        String fileName = imageFile.getOriginalFilename();
-
-        File pathFile = new File(SAVE_LOCATION + fileName);
-
-        if (!pathFile.exists()) {
-
-            try {
-                imageFile.transferTo(pathFile);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-
-            String tempName = fileName;
-
-            for (int i = 1; pathFile.exists(); i++) {
-                fileName = "(" + i + ")" + tempName;
-                pathFile = new File(SAVE_LOCATION + fileName);
-            }
-
-            try {
-                imageFile.transferTo(pathFile);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
+        deleteImage(product.getImage());
         product.setTitle(title);
         product.setPrice(price);
-        product.setImage(fileName);
+        product.setImage(getOriginalImageName(imageFile.getOriginalFilename()));
         productRepository.edit(product);
+        saveImage(imageFile);
     }
 
     @Override
     @Transactional
     public void delete(int id) {
-
-        final String SAVE_LOCATION = basedir + "/src/main/webapp/productImages/";
-
         Product product = getById(id);
-        String fileName = product.getImage();
-        File pathFile = new File(SAVE_LOCATION + fileName);
-        pathFile.delete();
+        deleteImage(product.getImage());
         productRepository.delete(product);
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<Product> getAll() {
         return productRepository.getAll();
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public Product getById(int id) {
         return productRepository.getById(id);
+    }
+
+    private void saveImage(MultipartFile imageFile) {
+        String imageName = getOriginalImageName(imageFile.getOriginalFilename());
+        try {
+            imageFile.transferTo(new File(SAVE_LOCATION + imageName));
+        } catch (IOException e) {
+            logger.error("Error creating new file", e);
+        }
+    }
+
+    private void deleteImage(String fileName) {
+        File deletePathFile = new File(SAVE_LOCATION + fileName);
+        deletePathFile.delete();
+    }
+
+    private String getOriginalImageName(String imageName) {
+        File imagePath = new File(SAVE_LOCATION + imageName);
+        for (int i = 1; imagePath.exists(); i++) {
+            imageName = "(" + i + ")" + imageName;
+            imagePath = new File(SAVE_LOCATION + imageName);
+        }
+        return imageName;
     }
 
 }
