@@ -1,4 +1,5 @@
 /.idea
 /target
+/log
 /src/main/webapp/productImages
 *.iml
