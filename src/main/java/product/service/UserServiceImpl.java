@@ -12,56 +12,35 @@ import product.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
-	@Autowired
-	private UserRepository userRepository;
-	
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
-	
-	@Override
-	@Transactional
-	public void save(String login, String password) {
-		
-		String encodedPassword = passwordEncoder.encode(password);
-		Cart cart = new Cart();
-		User user = new User(login, encodedPassword, cart);
-		cart.setUser(user);
-		userRepository.save(user);
-	}
-	
-	@Override
-	@Transactional
-	public User getUser(String login) {
-		return userRepository.getUser(login);
-	}
-	
-	@Override
-	@Transactional
-	public User getCurrentUser(Object user) {
-			
-                if (user instanceof UserDetails) {
-                    	String username = ((UserDetails) user).getUsername();
-                    	User currentUser = getUser(username);
-            		return currentUser;
-                } 
-                
-                return null;        
-		
-	}
-	
-	@Override
-	@Transactional
-	public Cart getUserCart(Object user) {
-		
-		User currentUser = getCurrentUser(user);
-		
-		if (currentUser != null) {
-			Cart cart = currentUser.getCart();
-			return cart;
-		}
-		
-		return null;
-	}
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @Override
+    @Transactional
+    public void save(String login, String password) {
+        String encodedPassword = passwordEncoder.encode(password);
+        Cart cart = new Cart();
+        User user = new User(login, encodedPassword, cart);
+        cart.setUser(user);
+        userRepository.save(user);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public User getUser(String login) {
+        return userRepository.getUser(login);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Cart getUserCart(Object user) {
+        if (user.equals("anonymousUser")) return new Cart();
+        User currentUser = getUser(((UserDetails) user).getUsername());
+        return currentUser.getCart();
+    }
 
 }

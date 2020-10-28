@@ -26,7 +26,7 @@
 					<a class="headerButton" href="<c:url value="/product"/>">Catalog</a>
 				</sec:authorize>
 			</div>
-			<div id="user">	
+			<div id="user">
 				<sec:authorize access="!isAuthenticated()">
 					<a class="headerButton" href="<c:url value="/login"/>">Login</a>
 					<a class="headerButton" href="<c:url value="/registration"/>">Registration</a>
@@ -37,9 +37,11 @@
 				</sec:authorize>
 				<sec:authorize access="hasAuthority('USER')">
 					<a class="imgButton" href="<c:url value="/cart"/>"><img src="<c:url value="/images/cart.png"/>" width="25" height="15" alt="Cart"></a>
-					<div id="totalProducts">${cart.totalProducts}</div>
+					<c:if test = "${cart.totalProducts != 0}">
+						<div id="totalProducts">${cart.totalProducts}</div>
+					</c:if>
 				</sec:authorize>
-			</div>	
+			</div>
 		</div>
 		<div id="main">
 			<div id="content">
@@ -64,7 +66,7 @@
 			</div>
 			<script type="text/javascript">
 				function doAjax(productId) {
-					
+
 				    $.ajax({
 				        type: 'GET',
 				        url: 'buy',
@@ -80,7 +82,7 @@
 	        </script>
 		</div>
 		<div id="footer">
-	
+
 		</div>
 	</body>
 </html>

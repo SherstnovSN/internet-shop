@@ -9,8 +9,6 @@ public interface UserService {
 	
 	User getUser(String login);
 	
-	User getCurrentUser(Object user);
-	
 	Cart getUserCart(Object user);
 
 }
