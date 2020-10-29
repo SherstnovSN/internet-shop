@@ -37,9 +37,11 @@
 				</sec:authorize>
 				<sec:authorize access="hasAuthority('USER')">
 					<a class="imgButton" href="<c:url value="/cart"/>"><img src="<c:url value="/images/cart.png"/>" width="25" height="15" alt="Cart"></a>
-					<c:if test = "${cart.totalProducts != 0}">
-						<div id="totalProducts">${cart.totalProducts}</div>
-					</c:if>
+					<div id="totalProducts">
+						<c:if test="${cart.totalProducts != 0}">
+							${cart.totalProducts}
+						</c:if>
+					</div>
 				</sec:authorize>
 			</div>
 		</div>
