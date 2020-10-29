@@ -43,11 +43,11 @@ pageEncoding="UTF-8"%>
 				<table>
 					<tr>
 						<td><label>Title:</label></td>
-						<td><input type="text" name="title" required autofocus></td>
+						<td><input type="text" name="title" pattern="[a-zA-Z0-9]{1,20}" required autofocus></td>
 					</tr>
 					<tr>
 						<td><label>Price:</label></td>
-						<td><input type="text" name="price" required></td>
+						<td><input type="text" name="price" pattern="[0-9.]{1,20}" required></td>
 					</tr>
 					<tr>
 						<td><label>Image:</label></td>
