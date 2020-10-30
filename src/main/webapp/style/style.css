@@ -36,11 +36,10 @@
 }
 
 #content {
-    width: 73%;
+    width: 1368px;
     background: #ffffff;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 #emptyCart {
