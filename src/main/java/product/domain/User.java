@@ -1,5 +1,7 @@
 package product.domain;
 
+import product.enumeration.Role;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,7 +16,7 @@ public class User {
     private String password;
 
     @Column(name = "role")
-    private String role = "USER";
+    private String role = Role.USER.name();
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cart_id", referencedColumnName = "id")
