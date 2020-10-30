@@ -26,11 +26,8 @@ public class CartController {
 	@RequestMapping(value="/buy", method=RequestMethod.GET)
 	public @ResponseBody int buyProduct(@AuthenticationPrincipal Object user, 
 					    @RequestParam String id) {
-		int productId = Integer.parseInt(id);
-		cartService.addProduct(user, productId);
-		Cart cart = userService.getUserCart(user);
-		int totalProducts = cart.getTotalProducts();
-		return totalProducts;
+		cartService.addProduct(user, Integer.parseInt(id));
+		return userService.getUserCart(user).getTotalProducts();
 	}
 
 	@RequestMapping(value="/cart", method=RequestMethod.GET)
