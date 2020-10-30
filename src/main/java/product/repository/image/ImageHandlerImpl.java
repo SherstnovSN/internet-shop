@@ -32,7 +32,7 @@ public class ImageHandlerImpl implements ImageHandler {
     @Override
     public void delete(String imageName) {
         File deletePathFile = new File(SAVE_LOCATION + imageName);
-        deletePathFile.delete();
+        if (!deletePathFile.delete()) logger.error("File deletion error");
     }
 
     @Override
