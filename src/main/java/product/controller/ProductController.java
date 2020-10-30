@@ -2,6 +2,8 @@ package product.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import product.domain.Cart;
 import product.domain.Product;
 import product.service.ProductService;
@@ -76,10 +78,10 @@ public class ProductController {
         return "redirect:/product";
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String deleteProduct(@PathVariable int id) {
+    @RequestMapping(value = "/delete-product", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public void deleteProduct(@RequestParam int id) {
         productService.delete(id);
-        return "redirect:/product";
     }
 
 }
