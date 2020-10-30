@@ -46,7 +46,7 @@ pageEncoding="UTF-8"%>
 					</tr>
 					<tr>
 						<td><label>Title:</label></td>
-						<td><input onclick="this.select();" type="text" name="title" pattern="[a-zA-Z0-9]{1,20}" value="${product.title}" required></td>
+						<td><input onclick="this.select();" type="text" name="title" pattern="[a-zA-Z0-9 ]{1,20}" value="${product.title}" required></td>
 					</tr>
 					<tr>
 						<td><label>Price:</label></td>
