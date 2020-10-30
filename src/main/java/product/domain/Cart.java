@@ -65,10 +65,6 @@ public class Cart {
         return products;
     }
 
-    public void setProducts(Set<CartProduct> products) {
-        this.products = products;
-    }
-
     public void addProduct(CartProduct newProduct) {
         products.add(newProduct);
     }
@@ -77,7 +73,7 @@ public class Cart {
         for (CartProduct cartProduct : products) {
             if (cartProduct.getProduct().getId() == productId) return cartProduct;
         }
-        return null;
+        return new CartProduct();
     }
 
     public void deleteProduct(CartProduct currentProduct) {

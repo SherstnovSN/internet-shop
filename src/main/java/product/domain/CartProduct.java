@@ -27,13 +27,6 @@ public class CartProduct {
     public CartProduct() {
     }
 
-    public CartProduct(Cart cart, Product product, int quantity) {
-        pk = new CartProductId(cart.getId(), product.getId());
-        this.cart = cart;
-        this.product = product;
-        this.quantity = quantity;
-    }
-
     public Cart getCart() {
         return cart;
     }
@@ -58,10 +51,6 @@ public class CartProduct {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public double calculateCost() {
-        return quantity * product.getPrice();
     }
 
     @Override
