@@ -54,7 +54,7 @@ pageEncoding="UTF-8"%>
 					</tr>
 					<tr>
 						<td><label>Image:</label></td>
-						<td><input type="file" name="image" required></td>
+						<td><input type="file" name="image"></td>
 					</tr>
 					<tr>
 						<td colspan="2"><input type="submit" value="Edit product"></td>

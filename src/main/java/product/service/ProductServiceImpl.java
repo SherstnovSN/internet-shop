@@ -32,12 +32,14 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void edit(int id, String title, double price, MultipartFile imageFile) {
         Product product = getById(id);
-        imageHandler.delete(product.getImage());
+        if (!imageFile.isEmpty()) {
+            imageHandler.delete(product.getImage());
+            product.setImage(imageHandler.getAvailableImageName(imageFile.getOriginalFilename()));
+            imageHandler.save(imageFile);
+        }
         product.setTitle(title);
         product.setPrice(price);
-        product.setImage(imageHandler.getAvailableImageName(imageFile.getOriginalFilename()));
         productRepository.edit(product);
-        imageHandler.save(imageFile);
     }
 
     @Override
