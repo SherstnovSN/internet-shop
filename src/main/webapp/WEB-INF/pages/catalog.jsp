@@ -48,22 +48,22 @@
 		<div id="main">
 			<div id="content">
 				<c:forEach var="product" items="${productList}">
-				<div class="product-item">
-					<div class="productImg">
+					<div class="product-item">
 						<img src="<c:url value="/productImages/${product.image}"/>" alt="product image ${product.id}">
 						<div class="product-list">
-						    <h3>${product.title}</h3>
-						    <p>${product.price}</p>
-						    <sec:authorize access="!isAuthenticated()">
-						    	<a href="<c:url value="/login"/>"><button>Buy</button></a>
-						    </sec:authorize>
-						    <sec:authorize access="isAuthenticated()">
-						    	<c:set var="productId" value="${product.id}"/>
-						    	<button onclick="doAjax(${productId})">Buy</button>
-						    </sec:authorize>
-						  </div>
+							<h3>${product.title}</h3>
+							<p>${product.price}</p>
+							<sec:authorize access="!isAuthenticated()">
+								<a href="<c:url value="/login"/>">
+									<button>Buy</button>
+								</a>
+							</sec:authorize>
+							<sec:authorize access="isAuthenticated()">
+								<c:set var="productId" value="${product.id}"/>
+								<button onclick="doAjax(${productId})">Buy</button>
+							</sec:authorize>
+						</div>
 					</div>
-				</div>
 				</c:forEach>
 			</div>
 			<script type="text/javascript">
