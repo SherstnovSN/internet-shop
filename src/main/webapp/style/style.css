@@ -91,9 +91,22 @@ button {
     margin: 20px 10px 10px;
 }
 
+.editButton {
+    color: #17bf20;
+    margin: 0 10px;
+}
+
+.editButton:hover {
+    color: black;
+}
+
 .deleteButton {
     color: red;
     margin: 0 10px;
+}
+
+.deleteButton:hover {
+    color: black;
 }
 
 .headerButton {
@@ -101,16 +114,15 @@ button {
     margin: 0 10px;
 }
 
+.headerButton:hover {
+    color: #efefef;
+}
+
 .catalogButton {
     color: #9fc3ff;
 }
 
 .imgButton {
-    margin: 0 10px;
-}
-
-.editButton {
-    color: blue;
     margin: 0 10px;
 }
 
