@@ -60,7 +60,8 @@ form {
 }
 
 table {
-    border: 1px solid black;
+    border: 1px solid #e1e1e1;
+    background: #fdfde7;
 }
 
 th {
