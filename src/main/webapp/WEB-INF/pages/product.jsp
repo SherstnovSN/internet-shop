@@ -26,6 +26,9 @@ pageEncoding="UTF-8"%>
 				<sec:authorize access="hasAuthority('ADMIN')">
 					<a class="headerButton" href="<c:url value="/product"/>">Catalog</a>
 				</sec:authorize>
+				<sec:authorize access="hasAuthority('ADMIN')">
+					<a class="headerButton" href="<c:url value="/users"/>">Users</a>
+				</sec:authorize>
 			</div>
 			<div id="user">	
 				<sec:authorize access="!isAuthenticated()">

@@ -10,6 +10,8 @@ import product.domain.Cart;
 import product.domain.User;
 import product.repository.UserRepository;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -41,6 +43,12 @@ public class UserServiceImpl implements UserService {
         if (user.equals("anonymousUser")) return new Cart();
         User currentUser = getUser(((UserDetails) user).getUsername());
         return currentUser.getCart();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<User> getAll() {
+        return userRepository.getAll();
     }
 
 }

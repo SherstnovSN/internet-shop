@@ -3,6 +3,8 @@ package product.service;
 import product.domain.Cart;
 import product.domain.User;
 
+import java.util.List;
+
 public interface UserService {
 	
 	void save(String login, String password);
@@ -10,5 +12,7 @@ public interface UserService {
 	User getUser(String login);
 	
 	Cart getUserCart(Object user);
+
+	List<User> getAll();
 
 }

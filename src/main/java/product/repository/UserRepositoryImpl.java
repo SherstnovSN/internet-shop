@@ -8,6 +8,8 @@ import org.hibernate.SessionFactory;
 
 import product.domain.User;
 
+import java.util.List;
+
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 
@@ -24,6 +26,13 @@ public class UserRepositoryImpl implements UserRepository {
     public User getUser(String login) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(User.class, login);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<User> getAll() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("from User").list();
     }
 
 }
