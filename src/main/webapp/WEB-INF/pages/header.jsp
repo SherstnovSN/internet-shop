@@ -8,7 +8,7 @@
         <sec:authorize access="hasAuthority('USER')">
             <a class="headerButton" href="<c:url value="/catalog"/>">Catalog</a>
         </sec:authorize>
-        <sec:authorize access="hasAuthority('ADMIN')">
+        <sec:authorize access="hasAnyAuthority('ADMIN', 'MODERATOR')">
             <a class="headerButton" href="<c:url value="/product"/>">Catalog</a>
         </sec:authorize>
         <sec:authorize access="hasAuthority('ADMIN')">

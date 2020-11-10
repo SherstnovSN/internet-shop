@@ -31,7 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.authorizeRequests()
-				.antMatchers("/product").access("hasAuthority('ADMIN')").and()
+				.antMatchers("/product", "/add-new-product", "/edit-product/*", "/delete-product/*").access("hasAnyAuthority('ADMIN', 'MODERATOR')")
+				.antMatchers("/users").access("hasAuthority('ADMIN')").and()
 			.formLogin()
 				.loginPage("/login")
 				.loginProcessingUrl("/j_spring_security_check")
