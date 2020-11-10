@@ -29,7 +29,9 @@ public class ProductController {
     private UserService userService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String indexPage() {
+    public String indexPage(@AuthenticationPrincipal Object user, Model model) {
+        Cart cart = userService.getUserCart(user);
+        model.addAttribute("cart", cart);
         return "index";
     }
 

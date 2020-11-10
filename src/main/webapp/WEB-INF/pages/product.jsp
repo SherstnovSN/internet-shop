@@ -13,34 +13,7 @@ pageEncoding="UTF-8"%>
 		<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 	</head>
 	<body>
-		<div id="header">
-			<div id="name"><img src="<c:url value="/images/logo.png"/>" width="25" height="30" alt="logo"></div>
-			<div id="navigation">
-				<a class="headerButton" href="<c:url value="/"/>">Home</a>
-				<sec:authorize access="!isAuthenticated()">
-					<a class="headerButton" href="<c:url value="/catalog"/>">Catalog</a>
-				</sec:authorize>
-				<sec:authorize access="hasAuthority('USER')">
-					<a class="headerButton" href="<c:url value="/catalog"/>">Catalog</a>
-				</sec:authorize>
-				<sec:authorize access="hasAuthority('ADMIN')">
-					<a class="headerButton" href="<c:url value="/product"/>">Catalog</a>
-				</sec:authorize>
-				<sec:authorize access="hasAuthority('ADMIN')">
-					<a class="headerButton" href="<c:url value="/users"/>">Users</a>
-				</sec:authorize>
-			</div>
-			<div id="user">	
-				<sec:authorize access="!isAuthenticated()">
-					<a class="headerButton" href="<c:url value="/login"/>">Login</a>
-					<a class="headerButton" href="<c:url value="/registration"/>">Registration</a>
-				</sec:authorize>
-				<sec:authorize access="isAuthenticated()">
-					Login: <sec:authentication property="principal.username"/>
-					<a class="headerButton" href="<c:url value="/logout"/>">Logout</a>
-				</sec:authorize>
-			</div>	
-		</div>
+		<%@ include file="header.jsp" %>
 		<div id="main">
 			<a class="addButton" href="<c:url value="/add-new-product"/>">Add</a>
 			<div id="content">
