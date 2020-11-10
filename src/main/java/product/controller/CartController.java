@@ -51,7 +51,7 @@ public class CartController {
 		return "redirect:/cart";
 	}
 	
-	@RequestMapping(value="/delete-product/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/delete-product-from-cart/{id}", method=RequestMethod.GET)
 	public String deleteProductFromCart(@AuthenticationPrincipal Object user,
 					    @PathVariable int id) {		
 		cartService.deleteProduct(user, id);

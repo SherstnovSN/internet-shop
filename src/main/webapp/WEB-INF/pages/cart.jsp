@@ -31,7 +31,7 @@
 							<td align="center">${products.product.price * products.quantity}</td>
 							<td align="center"><a class="imgButton" href="<c:url value="/increase-product-quantity/${products.product.id}"/>"><img src="<c:url value="/images/plus.png"/>" width="13" height="13" alt="Cart"></a>
 								<a class="imgButton" href="<c:url value="/reduce-product-quantity/${products.product.id}"/>"><img src="<c:url value="/images/minus.png"/>" width="13" height="13" alt="Cart"></a> 
-								<a class="deleteButton" href="<c:url value="/delete-product/${products.product.id}"/>">Delete</a></td>
+								<a class="deleteButton" href="<c:url value="/delete-product-from-cart/${products.product.id}"/>">Delete</a></td>
 						</tr>
 					</c:forEach>
 					<tr>
