@@ -51,4 +51,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.getAll();
     }
 
+    @Override
+    @Transactional
+    public void editRole(String login, String role) {
+        getUser(login).setRole(role);
+    }
+
 }

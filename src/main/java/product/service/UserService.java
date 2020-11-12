@@ -15,4 +15,6 @@ public interface UserService {
 
 	List<User> getAll();
 
+	void editRole(String login, String role);
+
 }

@@ -18,12 +18,28 @@
                 <tr>
                     <th>Login</th>
                     <th>Role</th>
+                    <th>Action</th>
                 </tr>
                 <c:forEach var="user" items="${usersList}">
-                    <tr>
-                        <td>${user.login}</td>
-                        <td align="center">${user.role}</td>
-                    </tr>
+                    <c:url value="/edit-role" var="editRole"/>
+                    <form action="${editRole}" method="POST">
+                        <tr>
+                            <td>${user.login}<input type="hidden" name="login" value="${user.login}"></td>
+                            <td align="center">${user.role}</td>
+                            <td>
+                                <c:if test="${!user.role.equals('ADMIN')}">
+                                    <select name="role">
+                                        <c:forEach var="role" items="${rolesList}">
+                                            <c:if test="${!role.equals(user.role) && !role.equals('ADMIN')}">
+                                                <option value="${role}">${role}</option>
+                                            </c:if>
+                                        </c:forEach>
+                                    </select>
+                                    <input type="submit" value="Edit">
+                                </c:if>
+                            </td>
+                        </tr>
+                    </form>
                 </c:forEach>
             </table>
             <br>
