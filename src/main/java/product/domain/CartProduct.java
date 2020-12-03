@@ -1,7 +1,5 @@
 package product.domain;
 
-import java.util.Objects;
-
 import javax.persistence.*;
 
 @Entity
@@ -55,7 +53,7 @@ public class CartProduct {
 
     @Override
     public int hashCode() {
-        return (pk != null ? pk.hashCode() : 0);
+        return pk != null ? pk.hashCode() : 0;
     }
 
     @Override
@@ -63,6 +61,7 @@ public class CartProduct {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         CartProduct other = (CartProduct) obj;
-        return Objects.equals(pk, other.pk);
+        return pk.equals(other.pk);
     }
+
 }
